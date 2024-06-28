@@ -1,9 +1,583 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>This is the title of the webpage!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Terra Classic Network</title>
   </head>
   <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+    <header id="section1">
+      <nav id="navbar" class="header-main container">
+        <a href="https://terraclassic.network/" class="brand">
+          <img id="logo-brand" src="./assets/images/4172.png" alt="" />
+        </a>
+        <div class="desktop-nav-item hidden-xs">
+          <div class="nav-item dropdown">
+            <button id="test-btn-a" class="dropbtn">Network</button>
+            <div
+              id="desktopNetwork"
+              class="dropdown-content"
+              style="display: none"
+            >
+              <div class="dropdown-wrapper-flex">
+                <div class="drop-flex-item">
+                  <a onclick="NewTab()"
+                    >Block Explorer
+                    <span><i class="fa-solid fa-arrow-up"></i></span
+                  ></a>
+                  <p>View transaction & network information</p>
+                </div>
+                <div class="drop-flex-item">
+                  <a href="https://docs.terraclassic.network/"
+                    >RPC Providers
+                    <span><i class="fa-solid fa-arrow-up"></i></span
+                  ></a>
+                  <p>Build dapps that can scale</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="https://terraclassic.network/"
+            data-link="search"
+            class="btn-launch-1 nav-link"
+            >Ecosystem</a
+          >
+        </div>
+        <div class="nav-menu">
+          <div class="desktop-nav-item hidden-lg">
+            <div class="nav-item dropdown">
+              <button class="dropbtn" id="test-btn">Network</button>
+              <div id="test-drb" class="dropdown-content" style="display: none">
+                <div class="dropdown-wrapper-flex">
+                  <div class="drop-flex-item">
+                    <a onclick="NewTab()"
+                      >Block Explorer
+                      <span><i class="fa-solid fa-arrow-up"></i></span
+                    ></a>
+                    <p>View transaction & network information</p>
+                  </div>
+                  <div class="drop-flex-item">
+                    <a href="https://docs.terraclassic.network/"
+                      >RPC Providers
+                      <span><i class="fa-solid fa-arrow-up"></i></span
+                    ></a>
+                    <p>Build dapps that can scale</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nav-link">
+              <a
+                data-link="search"
+                href="https://terraclassic.network/"
+                class="btn-launch"
+                >Ecosystem</a
+              >
+            </div>
+          </div>
+          <div class="mobile-btn-nav">
+            <a
+              target="_blank"
+              href="https://station.terraclassic.community/"
+              class="nav-item btn-launch black-btn"
+              >Launch Station</a
+            >
+          </div>
+        </div>
+        <div class="hamburger hidden-lg">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="banner-rpc">
+        <div class="tw-html_parser undefined">
+          <div class="white-back first-wrapper container">
+            <h1 id="rpc-infrastructure" class="tw-scroll-mt-28">
+              RPC Infrastructure
+            </h1>
+            <p>
+              <strong>Overview:</strong>&nbsp;RPC requests are an application’s
+              gateway to the Solana cluster. The requests are serviced by aptly
+              named RPC Nodes, which are typically dedicated to the task rather
+              than participating in consensus. Nevertheless, from an application
+              user’s perspective, poor RPC performance is no different from poor
+              cluster performance. To give your users a great experience and
+              show off Solana’s speed and low-latency, it is important to have
+              RPC infrastructure that is up to the task.
+            </p>
+            <p>
+              <strong>Development:</strong>&nbsp;Developers are encouraged to
+              use a local cluster during development, especially in the early
+              stages and for testing. Local clusters are more flexible than the
+              public offerings, granting the freedom to run unoptimized early
+              iterations. The easiest way to run a local cluster is with
+              the&nbsp;<a
+                class="cursor-pointer"
+                href="https://docs.solana.com/developing/test-validator"
+                rel="noopener noreferrer"
+                target="_blank"
+                >solana-test-validator</a
+              >&nbsp;binary, included in the Solana CLI Tools suite. Once the
+              application reaches a stable state, deploying on a public cluster
+              becomes more appropriate.
+            </p>
+            <p>
+              Like all code optimization tasks, when it comes to RPC requests,
+              less is more. Avoid making frequent, repetitive calls for the same
+              data. Avoid building clients that make RPC requests directly.
+              “Backend-less dApps” are a myth; you are just pummelling someone
+              else’s infrastructure. Cache expensive calls
+              (especially&nbsp;getProgramAccount,&nbsp;getSignaturesForAddress2,
+              and&nbsp;getConfirmedBlock) in an app-optimized way and serve your
+              users from the cache. Taking the time to optimize your code before
+              going live can save you a lot of headaches from poor user
+              experience reports, and can significantly reduce your
+              infrastructure spend.
+            </p>
+          </div>
+
+          <div class="gray-back">
+            <div class="first-wrapper container">
+              <h2 id="free-services" class="tw-scroll-mt-28">Free Services</h2>
+              <p>
+                Several providers offer free RPC access to the public Solana
+                clusters. These services are good for real-world testing, early
+                demos, and small, private beta programs. Keep in mind that you
+                get exactly what you are paying for. Free services typically do
+                not autoscale, are rate-limited, offer no SLA, and are not
+                afraid to ban abusers. When an application is ready to be opened
+                to the public, it is time to invest in private RPC access.
+              </p>
+              <p><strong>Some free RPC providers:</strong></p>
+              <p><strong>Testnet </strong></p>
+              <ul>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://api.testnet.solana.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >https://api.testnet.solana.com</a
+                  >
+                </li>
+              </ul>
+              <p><strong>Devnet</strong></p>
+              <ul>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://api.devnet.solana.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >https://api.devnet.solana.com</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://rpc.ankr.com/solana_devnet"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >https://rpc.ankr.com/solana_devnet</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://helius.xyz/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Helius</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.quicknode.com/chains/sol"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >QuickNode</a
+                  >
+                </li>
+              </ul>
+              <p><strong>Mainnet-beta </strong></p>
+              <ul>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://api.mainnet-beta.solana.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >https://api.mainnet-beta.solana.com</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://syndica.io/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Syndica</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.blockdaemon.com/protocols/solana"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Blockdaemon</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://rpc.ankr.com/solana"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >https://rpc.ankr.com/solana</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://getblock.io/nodes/sol/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >GetBlock</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://helius.xyz/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Helius</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.quicknode.com/chains/sol"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >QuickNode</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="white-back">
+            <div class="first-wrapper container">
+              <h2 class="tw-scroll-mt-28">
+                <strong>﻿Private Services</strong>
+              </h2>
+              <p>
+                Due to the variability in RPC requirements between applications,
+                generalized public RPC infrastructure rarely fits the bill. To
+                ensure users get a good experience, public facing applications
+                need to secure their own private RPC access. This will allow you
+                to autoscale based on user demand, relax rate limits according
+                to your application, and have peace of mind that other
+                applications’ users won’t crowd yours out. Several organizations
+                offer high-availability, on-demand RPC services; see below. If
+                none of the providers are a good fit and you’re up to the task
+                of running your own RPC service, please reach out to the Solana
+                Foundation for guidance.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.quicknode.com/chains/sol"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >QuickNode</a
+                  >&nbsp;(shared)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://triton.one/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Triton/RPC Pool</a
+                  >&nbsp;(shared and dedicated)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://chainflow.io/contact/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Chainflow</a
+                  >&nbsp;(dedicated)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://chainstack.com/build-better-with-solana/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Chainstack</a
+                  >&nbsp;(shared and dedicated)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://genesysgo.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >GenesysGo</a
+                  >&nbsp;(dedicated)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://datahub.figment.io/sign_up?service=solana"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Figment</a
+                  >&nbsp;(shared)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://solana.org/delegation-program"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Foundation Server Program</a
+                  >&nbsp;- bare metal at a discount to run-your-own
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://syndica.io/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Syndica</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.alchemy.com/solana"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Alchemy</a
+                  >&nbsp;(shared)
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://blockdaemon.com/marketplace/solana/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Blockdaemon</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://www.ankr.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Ankr</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://getblock.io/nodes/sol/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >GetBlock</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://helius.xyz/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >Helius</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="cursor-pointer"
+                    href="https://nownodes.io/nodes/solana-sol"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    >NOWNodes</a
+                  >&nbsp;(shared and dedicated)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section></section>
+      <section></section>
+    </main>
+    <script>
+      document.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 2) {
+          // Adjust this value to your desired scroll position
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 2) {
+          // Adjust this value to your desired scroll position
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+      document.addEventListener("scroll", function () {
+        const dropbtn = document.querySelector(".dropbtn");
+
+        if (window.scrollY > 2) {
+          dropbtn.style.color = "white";
+        } else {
+          dropbtn.style.color = "black";
+        }
+      });
+      document.addEventListener("scroll", function () {
+        const header = document.querySelector(".btn-launch-1");
+
+        if (window.scrollY > 2) {
+          header.style.color = "white";
+        } else {
+          header.style.color = "black";
+        }
+      });
+
+      let dropBtn = document.getElementById("test-btn");
+      // console.log(dropBtn);
+      dropBtn.addEventListener("click", function () {
+        // console.log("clicked");
+        const header = document.querySelector("#test-drb");
+        // console.log(header);
+        dropBtn.classList.toggle("active");
+        if (header.style.display == "none") {
+          header.style.display = "block";
+        } else {
+          header.style.display = "none";
+        }
+        event.stopPropagation(); // Prevent event from bubbling up to the document
+      });
+      // let dropBtnA = document.getElementById("test-btn-a");
+      // // console.log(dropBtnA);
+      // dropBtnA.addEventListener("click", function () {
+      //   // console.log("clicked");
+      //   const header = document.querySelector("#desktopNetwork");
+      //   // console.log(header);
+
+      //   if (header.style.display == "none") {
+      //     header.style.display = "block";
+      //   } else {
+      //     header.style.display = "none";
+      //   }
+      // });
+      let dropBtnA = document.getElementById("test-btn-a");
+      dropBtnA.addEventListener("click", function (event) {
+        const header = document.querySelector("#desktopNetwork");
+        dropBtnA.classList.toggle("active");
+        if (header.style.display === "none" || header.style.display === "") {
+          header.style.display = "block";
+        } else {
+          header.style.display = "none";
+        }
+        event.stopPropagation(); // Prevent event from bubbling up to the document
+      });
+
+      // Function to close dropdown if clicked outside
+      function closeDropdown(event) {
+        const header = document.querySelector("#desktopNetwork");
+        const isClickInside =
+          dropBtn.contains(event.target) || header.contains(event.target);
+        if (!isClickInside) {
+          header.style.display = "none";
+          dropBtn.classList.remove("active");
+        }
+      }
+      function closeDropdownA(event) {
+        const header = document.querySelector("#test-drb");
+        const isClickInside =
+          dropBtnA.contains(event.target) || header.contains(event.target);
+        if (!isClickInside) {
+          header.style.display = "none";
+          dropBtnA.classList.remove("active");
+        }
+      }
+
+      // Add event listener to the document
+      document.addEventListener("click", closeDropdown);
+      document.addEventListener("click", closeDropdownA);
+
+      let hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".nav-link").forEach((n) =>
+        n.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+        })
+      );
+      const links = document.querySelectorAll(".nav-link");
+      const head = document.getElementById("section1");
+      links.forEach((item) => {
+        item.addEventListener("click", () => {
+          const el = document.getElementById(item.getAttribute("data-link"));
+          const redirectLink = document.getElementById(
+            item.getAttribute("href")
+          );
+          console.log(redirectLink);
+          const e = el.offsetTop - head.offsetHeight;
+          if (redirectLink) {
+            window.open(redirectLink, "_blank");
+          }
+          // el.scrollIntoView({ behavior: "smooth", top: e });
+          window.scrollTo({
+            behavior: "smooth",
+            top: e,
+          });
+        });
+      });
+
+      function NewTab() {
+        window.open("https://finder.terra.money/classic/", "_blank");
+      }
+    </script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
